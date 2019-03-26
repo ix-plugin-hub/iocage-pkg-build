@@ -15,12 +15,6 @@ pipeline {
       }
     }
     stage('Build') {
-      post {
-        always {
-          archiveArtifacts artifacts: 'release/port-logs/latest/logs/errors/**', fingerprint: true
-          archiveArtifacts artifacts: 'release/src-logs/**', fingerprint: true
-        }
-      }
       environment {
          SIGNING_PRIV_KEY = credentials('iocage-signing-key')
          SIGNING_PUB_KEY = credentials('iocage-signing-pubkey')
