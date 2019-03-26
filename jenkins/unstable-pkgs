@@ -17,7 +17,7 @@ pipeline {
     stage('Build') {
       post {
         always {
-          archiveArtifacts artifacts: '/usr/local/poudriere/data/logs/bulk/iocage-iocports/latest/**', fingerprint: false
+          archiveArtifacts artifacts: 'artifacts/**', fingerprint: false
         }
       }
       environment {
@@ -25,6 +25,7 @@ pipeline {
          SIGNING_PUB_KEY = credentials('iocage-signing-pubkey')
       }
       steps {
+	sh 'ln -s /usr/local/poudriere/data/logs/bulk/iocage-iocports/latest artifacts'
         sh 'sh scripts/run-poudriere.sh'
       }
     }
