@@ -15,6 +15,11 @@ pipeline {
       }
     }
     stage('Build') {
+      post {
+        always {
+          archiveArtifacts artifacts: '/usr/local/poudriere/data/logs/bulk/iocage-iocports/latest/logs/**', fingerprint: false
+        }
+      }
       environment {
          SIGNING_PRIV_KEY = credentials('iocage-signing-key')
          SIGNING_PUB_KEY = credentials('iocage-signing-pubkey')
