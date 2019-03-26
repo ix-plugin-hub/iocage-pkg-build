@@ -53,7 +53,10 @@ EOF
   if [ ! -d "${POUDCONFDIR}/poudriere.d" ] ; then
     mkdir -p ${POUDCONFDIR}/poudriere.d
   fi
-  cp scripts/port-options.conf ${POUDCONFDIR}/poudriere.d/${PJAILNAME}-make.conf
+  cp conf/port-options.conf ${POUDCONFDIR}/poudriere.d/${PJAILNAME}-make.conf
+  if [ $? -ne 0 ] ; then
+	  exit 1
+  fi
 
 }
 
@@ -113,7 +116,7 @@ update_poud_world
 do_portsnap
 
 # Start the build
-poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f iocage/iocage-ports
+poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f $(pwd)/conf/iocage-ports
 if [ $? -ne 0 ] ; then
    echo "Failed poudriere build..."
    exit 1
