@@ -8,9 +8,6 @@ iocage packages
 pipeline {
   agent { label 'iocage-pkgs' }
 
-  environment {
-  }
-
   stages {
     stage('Checkout') {
       steps {
@@ -36,7 +33,7 @@ pipeline {
       steps {
         sshagent (credentials: ['030afaea-a3b0-4a42-b70f-6258496d4945']) {
           sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null iocage@cdn1.tn.ixsystems.com mkdir -p /cdn/pkg.cdn.trueos.org/iocage/unstable || true'
-          sh 'cd ${ZROOT}/data/packages/${PJAILNAME}-${PPORTS} && rsync -av --delete-after --delay-updates -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" . iocage@cdn1.tn.ixsystems.com:/cdn/pkg.cdn.trueos.org/iocage/unstable/'
+          sh 'cd /usr/local/poudriere/data/packages/iocage-iocports && rsync -av --delete-after --delay-updates -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" . iocage@cdn1.tn.ixsystems.com:/cdn/pkg.cdn.trueos.org/iocage/unstable/'
         }
       }
     }
