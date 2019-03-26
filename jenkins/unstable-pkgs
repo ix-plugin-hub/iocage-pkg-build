@@ -17,7 +17,7 @@ pipeline {
     stage('Build') {
       post {
         always {
-          archiveArtifacts artifacts: '/usr/local/poudriere/data/logs/bulk/iocage-iocports/latest/logs/**', fingerprint: false
+          archiveArtifacts artifacts: '/usr/local/poudriere/data/logs/bulk/iocage-iocports/latest/**', fingerprint: false
         }
       }
       environment {
