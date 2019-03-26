@@ -1,0 +1,51 @@
+/*
+
+Our default Jenkins pipeline we use to create our unstable
+iocage packages
+
+*/
+
+pipeline {
+  agent { label 'iocage-pkgs' }
+
+  environment {
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('Build') {
+      post {
+        always {
+          archiveArtifacts artifacts: 'release/port-logs/latest/logs/errors/**', fingerprint: true
+          archiveArtifacts artifacts: 'release/src-logs/**', fingerprint: true
+        }
+      }
+      environment {
+         SIGNING_PRIV_KEY = credentials('iocage-signing-key')
+         SIGNING_PUB_KEY = credentials('iocage-signing-pubkey')
+      }
+      steps {
+        sh 'sh scripts/run-poudriere.sh'
+      }
+    }
+    stage('Publish') {
+      steps {
+        sshagent (credentials: ['030afaea-a3b0-4a42-b70f-6258496d4945']) {
+          sh 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null iocage@cdn1.tn.ixsystems.com mkdir -p /cdn/pkg.cdn.trueos.org/iocage/unstable || true'
+          sh 'cd ${ZROOT}/data/packages/${PJAILNAME}-${PPORTS} && rsync -av --delete-after --delay-updates -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" . iocage@cdn1.tn.ixsystems.com:/cdn/pkg.cdn.trueos.org/iocage/unstable/'
+        }
+      }
+    }
+  }
+  post {
+    success {
+      script {
+        cleanWs notFailBuild: true
+      }
+    }
+  }
+}
