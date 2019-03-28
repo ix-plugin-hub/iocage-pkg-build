@@ -143,3 +143,6 @@ EOF
   pkg repo . signing_command: /tmp/sign.sh
   if [ $? -ne 0 ] ; then exit 1 ; fi
 fi
+
+echo "Build complete!"
+exit 0
