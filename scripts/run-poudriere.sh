@@ -141,7 +141,7 @@ EOF
   cd ${PPKGDIR}
   if [ $? -ne 0 ] ; then exit 1 ; fi
   pkg repo . signing_command: /tmp/sign.sh
-  if [ $? -ne 0 ] ; then exit 1 ; fi
+  if [ $? -ne 0 ] ; then sleep 600; exit 1 ; fi
 fi
 
 echo "Build complete!"
