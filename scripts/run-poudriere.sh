@@ -125,9 +125,9 @@ if [ -n "$SIGNING_PRIV_KEY" ] ; then
   cat > /tmp/sign.sh << EOF
 #!/bin/sh
 read -t 2 sum
-[ -z "$sum" ] && exit 1
+[ -z "\$sum" ] && exit 1
 echo SIGNATURE
-echo -n $sum | /usr/bin/openssl dgst -sign "${SIGNING_PRIV_KEY}" -sha256 -binary
+echo -n \$sum | /usr/bin/openssl dgst -sign "${SIGNING_PRIV_KEY}" -sha256 -binary
 echo
 echo CERT
 cat "${SIGNING_PUB_KEY}"
