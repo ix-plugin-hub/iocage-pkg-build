@@ -125,7 +125,7 @@ fi
 # Signing script
 if [ -n "$SIGNING_PRIV_KEY" ] ; then
   echo "Signing the packages"
-  % cat > /tmp/sign.sh << EOF
+  cat > /tmp/sign.sh << EOF
 #!/bin/sh
 read -t 2 sum
 [ -z "$sum" ] && exit 1
