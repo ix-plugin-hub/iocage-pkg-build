@@ -130,10 +130,10 @@ if [ -n "$SIGNING_PRIV_KEY" ] ; then
 read -t 2 sum
 [ -z "$sum" ] && exit 1
 echo SIGNATURE
-echo -n $sum | /usr/bin/openssl dgst -sign ${SIGNING_PRIV_KEY} -sha256 -binary
+echo -n $sum | /usr/bin/openssl dgst -sign "${SIGNING_PRIV_KEY}" -sha256 -binary
 echo
 echo CERT
-cat ${SIGNING_PUB_KEY}
+cat "${SIGNING_PUB_KEY}"
 echo END
 EOF
   chmod 755 /tmp/sign.sh
