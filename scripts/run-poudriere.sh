@@ -44,6 +44,11 @@ USE_COLORS=yes
 NOLINUX=yes
 EOF
 
+  # Add the signing command for poudriere
+  if [ -n "$SIGNING_PRIV_KEY" ] ; then
+      echo "SIGNING_COMMAND=/tmp/sign.sh" >> ${POUDCONFDIR}/poudriere.conf
+  fi
+
   # Check if we have a ccache dir to be used
   if [ -e "/ccache" ] ; then
     echo "CCACHE_DIR=/ccache" >> ${POUDCONFDIR}/poudriere.conf
@@ -115,14 +120,6 @@ update_poud_world
 # Update the ports tree
 do_portsnap
 
-# Start the build
-poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f $(pwd)/conf/iocage-ports
-if [ $? -ne 0 ] ; then
-   echo "Failed poudriere build..."
-   exit 1
-fi
-
-# Signing script
 if [ -n "$SIGNING_PRIV_KEY" ] ; then
   echo "Signing the packages"
   cat > /tmp/sign.sh << EOF
@@ -137,12 +134,24 @@ cat "${SIGNING_PUB_KEY}"
 echo END
 EOF
   chmod 755 /tmp/sign.sh
-
-  cd ${PPKGDIR}
-  if [ $? -ne 0 ] ; then exit 1 ; fi
-  pkg repo . signing_command: /tmp/sign.sh
-  if [ $? -ne 0 ] ; then sleep 600; exit 1 ; fi
 fi
+
+
+# Start the build
+poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f $(pwd)/conf/iocage-ports
+if [ $? -ne 0 ] ; then
+   echo "Failed poudriere build..."
+   exit 1
+fi
+
+# Signing script
+#if [ -n "$SIGNING_PRIV_KEY" ] ; then
+#  echo "Signing the packages"
+#  cd ${PPKGDIR}
+#  if [ $? -ne 0 ] ; then exit 1 ; fi
+#  pkg repo . signing_command: /tmp/sign.sh
+#  if [ $? -ne 0 ] ; then sleep 600; exit 1 ; fi
+#fi
 
 echo "Build complete!"
 exit 0
