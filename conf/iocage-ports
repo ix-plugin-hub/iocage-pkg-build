@@ -1,6 +1,7 @@
 archivers/par2cmdline-tbb
 archivers/gtar
 databases/mysql56-server
+databases/mysql57-server
 databases/rrdtool
 databases/postgresql95-client
 databases/postgresql95-contrib
@@ -8,6 +9,9 @@ databases/postgresql95-server
 databases/postgresql96-client
 databases/postgresql96-contrib
 databases/postgresql96-server
+databases/postgresql10-server
+databases/postgresql10-client
+databases/postgresql10-contrib
 devel/cloudstack
 devel/gettext-runtime
 devel/icu
