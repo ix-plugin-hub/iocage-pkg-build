@@ -59,6 +59,8 @@ sysutils/bacula9-server
 sysutils/bacula-client
 sysutils/bacula-server
 sysutils/cdrtools
+sysutils/dsoperator
+sysutils/dssystem
 sysutils/munin-node
 sysutils/kiconvtool
 sysutils/tarsnap
