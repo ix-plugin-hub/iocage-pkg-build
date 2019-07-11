@@ -8,10 +8,12 @@ databases/postgresql95-contrib
 databases/postgresql95-server
 databases/postgresql96-client
 databases/postgresql96-contrib
+databases/postgresql96-plpython
 databases/postgresql96-server
 databases/postgresql10-server
 databases/postgresql10-client
 databases/postgresql10-contrib
+databases/postgresql10-plpython
 devel/cloudstack
 devel/gettext-runtime
 devel/icu
@@ -61,7 +63,6 @@ sysutils/bacula-server
 sysutils/cdrtools
 sysutils/dsoperator
 sysutils/dssystem
-sysutils/dssystem96
 sysutils/munin-node
 sysutils/kiconvtool
 sysutils/tarsnap
