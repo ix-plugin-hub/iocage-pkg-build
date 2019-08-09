@@ -1,5 +1,6 @@
 archivers/par2cmdline-tbb
 archivers/gtar
+archivers/unzip
 databases/mysql56-server
 databases/mysql57-server
 databases/rrdtool
