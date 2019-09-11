@@ -32,6 +32,8 @@ multimedia/plexmediaserver
 multimedia/plexmediaserver-plexpass
 multimedia/zoneminder
 multimedia/x264
+net/iconik
+net/iconik_ui
 net/nss_ldap
 net/openldap24-client
 net/samba48
