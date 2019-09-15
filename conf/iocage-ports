@@ -15,6 +15,10 @@ databases/postgresql10-server
 databases/postgresql10-client
 databases/postgresql10-contrib
 databases/postgresql10-plpython
+databases/postgresql11-server
+databases/postgresql11-client
+databases/postgresql11-contrib
+databases/postgresql11-plpython
 dns/dnsmasq
 devel/gettext-runtime
 devel/icu
