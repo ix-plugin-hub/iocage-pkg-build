@@ -25,7 +25,7 @@ pipeline {
          SIGNING_PUB_KEY = credentials('iocage-signing-pubkey')
       }
       steps {
-	sh 'ln -s /usr/local/poudriere/data/logs/bulk/iocage-gitlabsports/latest artifacts'
+	sh 'ln -s /usr/local/poudriere/data/logs/bulk/iocage-gitlabports/latest artifacts'
         sh 'sh scripts/run-poudriere-gitlab112.sh'
       }
     }
