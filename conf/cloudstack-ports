@@ -2,8 +2,6 @@ devel/maven3
 ftp/wget
 sysutils/cdrtools
 shells/bash
-sysutils/cdrtools
-ftp/wget
 sysutils/e2fsprogs
 net-mgmt/iftop
 archivers/unzip
@@ -14,3 +12,5 @@ dns/py-dnspython
 net/py-netaddr
 devel/cloudstack
 lang/python
+www/nginx
+databases/mysql56-server
