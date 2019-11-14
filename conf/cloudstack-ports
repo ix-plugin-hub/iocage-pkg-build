@@ -1,0 +1,16 @@
+devel/maven3
+ftp/wget
+sysutils/cdrtools
+shells/bash
+sysutils/cdrtools
+ftp/wget
+sysutils/e2fsprogs
+net-mgmt/iftop
+archivers/unzip
+sysutils/ipmitool
+dns/dnsmasq
+security/sudo
+dns/py-dnspython
+net/py-netaddr
+devel/cloudstack
+lang/python
