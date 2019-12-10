@@ -31,6 +31,8 @@ games/minecraft-server
 irc/irssi
 irc/quassel-core
 irc/weechat
+lang/python2
+lang/python3
 multimedia/emby-server
 multimedia/plexmediaserver
 multimedia/plexmediaserver-plexpass
