@@ -1,3 +1,5 @@
+devel/py-virtualenv
+devel/py-pip
 databases/mysql56-server
 databases/mysql57-server
 databases/postgresql95-client
@@ -15,9 +17,12 @@ databases/postgresql11-server
 databases/postgresql11-client
 databases/postgresql11-contrib
 databases/postgresql11-plpython
+databases/py-sqlite3
 databases/phppgadmin
 databases/phpmyadmin
 databases/php72-pgsql
 lang/php72
+lang/python36
+lang/python3
 www/php72-session
 www/nginx
