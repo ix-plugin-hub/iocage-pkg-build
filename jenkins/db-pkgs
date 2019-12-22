@@ -26,7 +26,7 @@ pipeline {
       }
       steps {
 	sh 'ln -s /usr/local/poudriere/data/logs/bulk/iocage-dbports/latest artifacts'
-        sh 'sh scripts/run-poudriere-database.sh'
+        sh 'sh scripts/run-poudriere-databases.sh'
       }
     }
     stage('Publish') {
