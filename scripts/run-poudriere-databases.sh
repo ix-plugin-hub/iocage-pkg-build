@@ -138,7 +138,7 @@ fi
 
 
 # Start the build
-poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f $(pwd)/conf/database-ports
+poudriere -e ${POUDCONFDIR} bulk ${POUDFLAGS} -j ${PJAILNAME} -p ${PPORTS} -f $(pwd)/conf/db-ports
 if [ $? -ne 0 ] ; then
    echo "Failed poudriere build..."
    exit 1
