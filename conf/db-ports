@@ -20,6 +20,7 @@ databases/postgresql11-plpython
 databases/py-sqlite3
 databases/phppgadmin
 databases/phpmyadmin
+databases/go-pgweb
 databases/php72-pgsql
 lang/php72
 lang/python36
